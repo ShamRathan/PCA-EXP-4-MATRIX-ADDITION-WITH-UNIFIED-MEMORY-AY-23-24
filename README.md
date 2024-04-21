@@ -36,9 +36,7 @@ Allocate Host Memory
 20.	Free memory allocated on the device using cudaFree.
 21.	Reset Device and Exit
 22.	Reset the device using cudaDeviceReset and return from the main function.
-
 ## PROGRAM:
-
 ```
 %%cuda
 #include <stdio.h>
@@ -82,7 +80,6 @@ Allocate Host Memory
         exit(1);                                                               \
     }                                                                          \
 }
-
 #define CHECK_CUFFT(call)                                                      \
 {                                                                              \
     cufftResult err;                                                           \
@@ -93,7 +90,6 @@ Allocate Host Memory
         exit(1);                                                               \
     }                                                                          \
 }
-
 #define CHECK_CUSPARSE(call)                                                   \
 {                                                                              \
     cusparseStatus_t err;                                                      \
@@ -109,7 +105,6 @@ Allocate Host Memory
         exit(1);                                                               \
     }                                                                          \
 }
-
 inline double seconds()
 {
     struct timeval tp;
@@ -124,7 +119,6 @@ inline double seconds()
 #include <stdio.h>
 #include <cuda_runtime.h>
 #include <stdio.h>
-
 void initialData(float *ip, const int size)
 {
     int i;
@@ -134,7 +128,6 @@ void initialData(float *ip, const int size)
     }
     return;
 }
-
 void sumMatrixOnHost(float *A, float *B, float *C, const int nx, const int ny)
 {
     float *ia = A;
@@ -152,10 +145,8 @@ void sumMatrixOnHost(float *A, float *B, float *C, const int nx, const int ny)
         ib += nx;
         ic += nx;
     }
-
     return;
 }
-
 void checkResult(float *hostRef, float *gpuRef, const int N)
 {
     double epsilon = 1.0E-8;
@@ -170,13 +161,11 @@ void checkResult(float *hostRef, float *gpuRef, const int N)
             break;
         }
     }
-
     if (!match)
     {
         printf("Arrays do not match.\n\n");
     }
 }
-
 // grid 2D block 2D
 __global__ void sumMatrixGPU(float *MatA, float *MatB, float *MatC, int nx,
                              int ny)
@@ -189,10 +178,7 @@ __global__ void sumMatrixGPU(float *MatA, float *MatB, float *MatC, int nx,
     {
         MatC[idx] = MatA[idx] + MatB[idx];
     }
-
-
 }
-
 int main(int argc, char **argv)
 {
     printf("%s Starting ", argv[0]);
@@ -215,14 +201,12 @@ int main(int argc, char **argv)
     int nxy = nx * ny;
     int nBytes = nxy * sizeof(float);
     printf("Matrix size: nx %d ny %d\n", nx, ny);
-
     // malloc host memory
     float *A, *B, *hostRef, *gpuRef;
     CHECK(cudaMallocManaged((void **)&A, nBytes));
     CHECK(cudaMallocManaged((void **)&B, nBytes));
     CHECK(cudaMallocManaged((void **)&gpuRef,  nBytes);  );
     CHECK(cudaMallocManaged((void **)&hostRef, nBytes););
-
 
     // initialize data at host side
     double iStart = seconds();
@@ -274,7 +258,6 @@ int main(int argc, char **argv)
 
     // reset device
     CHECK(cudaDeviceReset());
-
     return (0);
 }
 ```
