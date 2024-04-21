@@ -282,6 +282,7 @@ int main(int argc, char **argv)
 ## OUTPUT:
 ![image](https://github.com/ShamRathan/PCA-EXP-4-MATRIX-ADDITION-WITH-UNIFIED-MEMORY-AY-23-24/assets/93587823/ea230eee-f4c0-4959-8336-901e341e0f59)
 
+### WITHOUT MEMSET()
 ![image](https://github.com/ShamRathan/PCA-EXP-4-MATRIX-ADDITION-WITH-UNIFIED-MEMORY-AY-23-24/assets/93587823/8213498b-e5ce-4bb6-9cc5-2fe0640c213b)
 
 ## RESULT:
